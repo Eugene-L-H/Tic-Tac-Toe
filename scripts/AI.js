@@ -1,38 +1,38 @@
 const boardChecker = () => {
-  function tileRuns() {
+  function tileRuns(r) {
     const aRow = r.slice(0, 3);
     const bRow = r.slice(3, 6);
     const cRow = r.slice(6, 9);
-    const onesCol = r[0] + r[3] + r[6];
-    const twosCol = r[1] + r[4] + r[7];
-    const thresCol = r[2] + r[5] + r[8];
+    const zeroCol = r[0] + r[3] + r[6];
+    const oneCol = r[1] + r[4] + r[7];
+    const twoCol = r[2] + r[5] + r[8];
     const diagonal1 = r[0] + r[4] + r[8];
     const diagonal2 = r[6] + r[4] + r[2];
 
-    const winPatterns = [
+    const gameRuns = [
       aRow,
       bRow,
       cRow,
-      onesCol,
-      twosCol,
-      thresCol,
+      zeroCol,
+      oneCol,
+      twoCol,
       diagonal1,
       diagonal2,
     ];
 
-    return winPatterns;
+    return gameRuns;
   }
 
   function checkForWin() {
     let results = '';
-    r = results; // For frequent reference below.
 
     for (let i = 0; i < 9; i++) {
       let tile = gameboard.marker[i];
-      r += tile;
+      // Return gameboard.marker array converted to string.
+      results += tile;
     }
 
-    winPatterns = boardChecker.tileRuns();
+    winPatterns = boardChecker.tileRuns(r);
 
     let patternNo = 0;
     for (let j = 0; j < 9; j++) {

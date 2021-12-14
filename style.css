@@ -1,28 +1,31 @@
 html,
 body {
+  height: 100%;
   margin: 0;
 }
 
 body {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   justify-content: center;
   align-items: center;
+  background-color: #2f4f4f;
 }
 
 .play-area {
-  position: absolute;
   display: flex;
   flex-flow: wrap column;
   justify-content: center;
   align-items: center;
-  gap: 0.5vw;
-  height: 45vw;
-  width: 45vw;
+  gap: 0.45vw;
+  height: 40.5vw;
+  width: 40.5vw;
   padding: 0 0.5vw;
   background-color: #000;
-  border: solid #000 1px;
+  border: solid #000 0.25vw;
+  margin: auto 0 0.5vw 0;
 }
 
 .tile {
@@ -31,10 +34,85 @@ body {
   justify-content: center;
   font-size: 12vw;
   color: yellowgreen;
-  height: 14vw;
-  width: 14vw;
-  background-color: #fff;
-  border: solid #000 1px;
+  height: 12.5vw;
+  width: 12.5vw;
+  background-color: #d8d8d8;
+  border: solid #000 0.125vw;
+}
+
+/* Game winning lines displayed after game win */
+.lines {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.line {
+  position: absolute;
+  background-color: #0000aa;
+  height: 0.75vw;
+  width: 40vw;
+  z-index: 1;
+}
+
+.a-row,
+.b-row,
+.c-row {
+  margin-left: 2.5vw;
+}
+
+.a-row {
+  margin-top: 7vw;
+  margin-left: 2.5vw;
+}
+
+.b-row {
+  margin-top: 22vw;
+}
+
+.c-row {
+  margin-top: 37vw;
+}
+
+.zero-col,
+.one-col,
+.two-col {
+  transform: rotate(90deg);
+  margin-top: 21.75vw;
+}
+
+.zero-col {
+  margin-left: 3vw;
+}
+
+.one-col {
+  margin-left: -12vw;
+}
+
+.two-col {
+  margin-left: 18vw;
+}
+
+.diagonal,
+.diagonal1 {
+  width: 50vw;
+}
+
+.diagonal {
+  transform: rotate(45deg);
+  margin: 22vw 0 0 -2vw;
+}
+
+.diagonal1 {
+  transform: rotate(135deg);
+  margin: 22vw 0 0 -2vw;
+}
+
+footer {
+  font-size: 2vw;
+  font-style: italic;
+  margin: auto 0 0.5vw 0;
 }
 
 .red-tile {
@@ -58,10 +136,33 @@ body {
     height: 140px;
     width: 140px;
   }
+
+  footer {
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 1200px) {
   .play-area {
-    padding: 3px 8px;
+    border-top: 8px solid #000;
+    border-bottom: 8px solid #000;
+  }
+}
+
+@media (max-width: 300px) {
+  .tile {
+    height: 12.3vw;
+    width: 12.3vw;
+  }
+}
+
+@media (max-height: 300px) {
+  .play-area {
+    height: 35.25vw;
+    width: 35.25vw;
+  }
+  .tile {
+    height: 11vw;
+    width: 11vw;
   }
 }
