@@ -15,12 +15,6 @@ body {
   background-color: #2f4f4f;
 }
 
-.center-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .play-area {
   display: flex;
   flex-flow: row wrap;
@@ -52,16 +46,16 @@ body {
 /* Game winning lines displayed after game win */
 .lines {
   position: absolute;
-  height: 42vw;
-  width: 42vw;
-  margin: -5vw 3vw 0 0;
+  height: 41vw;
+  width: 41vw;
+  margin: -5vw 5vw 0 0;
 }
 
 .line {
   position: absolute;
   background-color: #0000aa;
   height: 0.75vw;
-  width: 40vw;
+  width: inherit;
 }
 
 .a-row,
@@ -71,7 +65,7 @@ body {
 }
 
 .a-row {
-  margin-top: 7vw;
+  margin-top: 8vw;
   margin-left: 2.5vw;
 }
 
@@ -80,7 +74,7 @@ body {
 }
 
 .c-row {
-  margin-top: 37vw;
+  margin-top: 35.25vw;
 }
 
 .zero-col,
@@ -91,15 +85,15 @@ body {
 }
 
 .zero-col {
-  margin-left: 3vw;
+  margin-left: 2.5vw;
 }
 
 .one-col {
-  margin-left: -12vw;
+  margin-left: -11vw;
 }
 
 .two-col {
-  margin-left: 18vw;
+  margin-left: 16vw;
 }
 
 .diagonal,
@@ -133,6 +127,7 @@ footer {
 
 .hide {
   visibility: hidden;
+  z-index: 0;
 }
 
 .show {
@@ -242,5 +237,14 @@ footer {
   .tile {
     height: 11vw;
     width: 11vw;
+  }
+}
+
+@media (max-width: 224px) {
+  .play-area {
+    width: 50vw;
+    height: 50vw;
+    border-top: solid #000 2vw;
+    border-bottom: solid #000 2vw;
   }
 }

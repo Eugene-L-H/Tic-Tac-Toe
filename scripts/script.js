@@ -7,9 +7,8 @@ const gameboard = (() => {
     tile.addEventListener('click', (e) => {
       addX(e.target);
       // CPU turn.
-      console.log(gameboard.turn);
       cpu.behavior(gameboard.turn);
-      checkWin(gameboard.marked);
+      // checkForWin(gameboard.marked);
       gameboard.turn++;
     });
   }
