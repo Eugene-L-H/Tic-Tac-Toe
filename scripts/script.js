@@ -6,10 +6,15 @@ const gameboard = (() => {
 
     tile.addEventListener('click', (e) => {
       addX(e.target);
+      gameboard.turn++;
+      // Game over if board is full.
+      boardChecker.outOfTurns(gameboard.turn);
+
       // CPU turn.
       cpu.behavior(gameboard.turn);
-      // checkForWin(gameboard.marked);
-      gameboard.turn++;
+
+      // Determine if game should end due to 3 in a row.
+      boardChecker.checkForWin(gameboard.marked);
     });
   }
 
@@ -29,7 +34,19 @@ const gameboard = (() => {
 
   let marked = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
 
-  const turn = 0;
+  let turn = 0;
 
-  return { squares, marked, turn };
+  function clearBoard() {
+    for (let i = 0; i < playArea.length; i++) {
+      const tile = playArea[i];
+      tile.innerHTML = '';
+      tile.classList.remove('no-pointers');
+      tile.classList.remove('red-tile');
+    }
+
+    gameboard.marked = ['-', '-', '-', '-', '-', '-', '-', '-', '-'];
+    gameboard.turn = 0;
+  }
+
+  return { playArea, squares, marked, turn, clearBoard };
 })();

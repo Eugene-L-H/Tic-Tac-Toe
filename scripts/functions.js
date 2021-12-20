@@ -49,12 +49,10 @@ cpu.pickCorner = () => {
 
   while (true) {
     let spot = corners[cpu.random(3)];
-    console.log('spot = ' + spot);
     if (gameboard.marked[spot] != '-') {
       continue;
     }
     gameboard.marked[spot] = 'O';
-    console.log(gameboard.marked);
     return spot;
   }
 };

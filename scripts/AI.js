@@ -24,43 +24,44 @@ const boardChecker = (() => {
   }
 
   function checkForWin() {
-    let results = '';
-
-    for (let i = 0; i < 9; i++) {
-      let tile = gameboard.marker[i];
-      // Return gameboard.marker array converted to string.
-      results += tile;
-    }
-
-    winPatterns = boardChecker.tileRuns(r);
+    winPatterns = boardChecker.tileRuns(gameboard.marked);
 
     let patternNo = 0;
-    for (let j = 0; j < 8; j++) {
-      let pattern = winPatterns[j];
+    for (let i = 0; i < 8; i++) {
+      let pattern = winPatterns[i];
 
       if (pattern == 'XXX' || pattern == 'OOO') {
-        console.log('WIN!');
-        // Draw reveal proper blue line across win.
+        // Reveal proper blue line across win.
         break;
       }
       patternNo++; // Used to determine which win line to use.
     }
-
-    return results;
   }
 
-  return { tileRuns, checkForWin };
+  function outOfTurns(turn) {
+    if (turn == 5) {
+      setTimeout(gameboard.clearBoard, 2000);
+      gameboard.turn = 0;
+      return;
+    }
+  }
+
+  return { tileRuns, checkForWin, outOfTurns };
 })();
 
+// AI opponent behavior.
 cpu.behavior = (turn) => {
+  // Do not place marker if game is over.
+  if (turn == 0) {
+    return;
+  }
   // Shortform for constant reference.
   const board = gameboard.marked; // Board.
-  const rand = cpu.random;
 
   let spot = 0; // Spot on board to be marked.
 
   // AI decisions.
-  if (turn == 0) {
+  if (turn == 1) {
     // If player not on center square, pick center.
     if (board[4] != 'X') {
       board[4] = 'O'; // "O" on center square.
@@ -70,43 +71,55 @@ cpu.behavior = (turn) => {
       spot = cpu.pickCorner();
     }
   } else {
-    const boardStatus = boardChecker.tileRuns(gameboard.marked);
-    let index = 0;
+    // Will handle inserting markers into marked array and inserting to the DOM.
+    function insertMark(index, spots) {
+      spot = spots[index];
+      gameboard.marked[spot] = 'O';
+      cpu.addMarker(spot);
+      return;
+    }
+    // Get current status of gameboard
+    const boardStatus = boardChecker.tileRuns(board);
+    // Looking for the win.
     for (let i = 0; i < 8; i++) {
       let check = boardStatus[i];
-      console.log(check);
-      if (check == '-XX') {
-        let row = [0, 3, 6, 0, 1, 2, 0, 6];
 
-        spot = row[index];
-        board[spot] = 'O';
-        cpu.addMarker(spot);
-        return;
-      } else if (check == 'XX-') {
-        let row = [2, 5, 8, 6, 7, 8, 8, 2];
-
-        spot = row[index];
-        board[spot] = 'O';
-        cpu.addMarker(spot);
-        return;
-      } else if (check == 'X-X') {
-        let row = [1, 4, 7, 3, 4, 5, 4, 4];
-
-        spot = row[index];
-
-        board[spot] = 'O';
-        cpu.addMarker(spot);
-        return;
+      switch (check) {
+        case '-OO':
+          insertMark(i, [0, 3, 6, 0, 1, 2, 0, 6]);
+          return;
+        case 'OO-':
+          insertMark(i, [2, 5, 8, 6, 7, 8, 8, 2]);
+          return;
+        case 'O-O':
+          insertMark(i, [1, 4, 7, 3, 4, 5, 4, 4]);
+          return;
       }
-      index++;
     }
-    let markedIndex = 0;
+
+    // For defense against X.
     for (let j = 0; j < 8; j++) {
-      let emptySpace = board[j];
-      if (emptySpace == '-') {
-        spot = markedIndex;
+      check = boardStatus[j];
+
+      switch (check) {
+        case '-XX':
+          insertMark(j, [0, 3, 6, 0, 1, 2, 0, 6]);
+          return;
+        case 'XX-':
+          insertMark(j, [2, 5, 8, 6, 7, 8, 8, 2]);
+          return;
+        case 'X-X':
+          insertMark(j, [1, 4, 7, 3, 4, 5, 4, 4]);
+          return;
       }
-      markedIndex++;
+    }
+
+    // If no runs are found.
+    for (let k = 0; k < 8; k++) {
+      let emptySpace = board[k];
+      if (emptySpace == '-') {
+        spot = k;
+      }
     }
   }
   gameboard.marked[spot] = 'O';
