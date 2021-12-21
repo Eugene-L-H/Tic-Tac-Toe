@@ -87,11 +87,11 @@ body {
 }
 
 .zero-col {
-  margin-left: 2.5vw;
+  margin-left: -11vw;
 }
 
 .one-col {
-  margin-left: -11vw;
+  margin-left: 2.5vw;
 }
 
 .two-col {

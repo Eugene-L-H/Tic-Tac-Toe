@@ -1,7 +1,6 @@
 const gameboard = (() => {
   const winLines = document.querySelectorAll('.line');
   const playArea = document.querySelectorAll('.tile');
-  console.log(winLines[0]);
 
   for (let i = 0; i < playArea.length; i++) {
     const tile = playArea[i];
