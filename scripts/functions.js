@@ -17,6 +17,7 @@ function addX(tile) {
 
   const id = tile.id;
 
+  // Inside squares, inside object, id is the key.
   const position = gameboard.squares[0][id];
 
   gameboard.marked[position] = 'X';

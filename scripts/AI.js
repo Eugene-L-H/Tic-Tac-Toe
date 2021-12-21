@@ -26,15 +26,17 @@ const boardChecker = (() => {
   function checkForWin() {
     winPatterns = boardChecker.tileRuns(gameboard.marked);
 
-    let patternNo = 0;
     for (let i = 0; i < 8; i++) {
+      let showLine = () => {
+        gameboard.winLines[i].classList.add('show'), 1000;
+      };
       let pattern = winPatterns[i];
-
       if (pattern == 'XXX' || pattern == 'OOO') {
         // Reveal proper blue line across win.
+        setTimeout(showLine, 2000);
+        setTimeout(gameboard.clearBoard, 4000);
         break;
       }
-      patternNo++; // Used to determine which win line to use.
     }
   }
 
@@ -78,8 +80,14 @@ cpu.behavior = (turn) => {
       cpu.addMarker(spot);
       return;
     }
+
+    function insertMark2(spot) {
+      gameboard.marked[spot] = 'O';
+      cpu.addMarker(spot);
+    }
     // Get current status of gameboard
     const boardStatus = boardChecker.tileRuns(board);
+
     // Looking for the win.
     for (let i = 0; i < 8; i++) {
       let check = boardStatus[i];
@@ -111,6 +119,40 @@ cpu.behavior = (turn) => {
         case 'X-X':
           insertMark(j, [1, 4, 7, 3, 4, 5, 4, 4]);
           return;
+      }
+    }
+
+    // Lone zero in the middle of a row after no runs found.
+    for (let k = 0; k < 8; k++) {
+      check = boardStatus[k];
+      if (check == '-O-') {
+        let side = cpu.random(2);
+        switch (k) {
+          case 0:
+            side == 1 ? insertMark2(0) : insertMark2(2);
+            return;
+          case 1:
+            side == 1 ? insertMark2(3) : insertMark2(5);
+            return;
+          case 2:
+            side == 1 ? insertMark2(6) : insertMark2(8);
+            return;
+          case 3:
+            side == 1 ? insertMark2(0) : insertMark2(6);
+            return;
+          case 4:
+            side == 1 ? insertMark2(1) : insertMark2(7);
+            return;
+          case 5:
+            side == 1 ? insertMark2(2) : insertMark2(8);
+            return;
+          case 6:
+            side == 1 ? insertMark2(0) : insertMark2(8);
+            return;
+          case 7:
+            side == 1 ? insertMark2(6) : insertMark2(2);
+            return;
+        }
       }
     }
 
