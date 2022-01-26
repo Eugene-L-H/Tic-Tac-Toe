@@ -1,7 +1,4 @@
-# Countdown
-A simple game of Tic-Tac-Toe played in the browser.
-
-# Description
+# Tic-Tac-Toe
 A game of Tic-Tac-Toe played in the browser against an AI opponent. Built with
 HTML, CSS, and JavaScript.
 
