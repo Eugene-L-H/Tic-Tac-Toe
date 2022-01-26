@@ -38,11 +38,11 @@ Issues:
     Perhaps in a future update I will create some inconsistency in the CPU
   behaviour that allows for mistakes.
 
-I was pressed to learn more about scaling from mobile to desktop with is this
-project; a topic I find quite challenging as I find myself having to learn more
-and more about CSS. CSS and styling doesn't seem to come as naturally to me as
+Some Learning Outcomes:
+-I was pressed to learn more about scaling from mobile to desktop with is this
+project; a topic I find quite challenging as I find myself needing to learn more
+and more about CSS. Styling doesn't seem to come as naturally to me as
 programming logic and JavaScript.
 
-I had an enjoyable time programming a AI that had to analyze conditions and make
-decisions. A simple AI, but I found it quite challenging and rewarding to come
-up with the version I did.
+-I had an enjoyable time programming an AI that had to analyze conditions and make
+decisions based on those conditions. 
