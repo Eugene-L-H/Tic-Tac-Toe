@@ -1,0 +1,253 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  background-color: #2f4f4f;
+}
+
+/* Box that contains the squares. */
+.play-area {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45vw;
+  height: 40.5vw;
+  width: 40.5vw;
+  background-color: #000;
+  border: solid #000 0.25vw;
+  border-top: solid #000 0.75vw;
+  border-bottom: solid #000 0.75vw;
+  margin: auto 0 0 0;
+}
+
+/* Individual tiles */
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 12vw;
+  color: #9acd32;
+  height: 12.5vw;
+  width: 12.5vw;
+  background-color: #d8d8d8;
+  border: solid #000 0.25vw;
+}
+
+/* Game winning lines displayed after game win */
+.lines {
+  position: absolute;
+  height: 41vw;
+  width: 41vw;
+  margin: -5vw 5vw 0 0;
+}
+
+.line {
+  position: absolute;
+  background-color: #0000aa;
+  height: 0.75vw;
+  width: inherit;
+}
+
+.a-row,
+.b-row,
+.c-row {
+  margin-left: 2.5vw;
+}
+
+.a-row {
+  margin-top: 8vw;
+  margin-left: 2.5vw;
+}
+
+.b-row {
+  margin-top: 22vw;
+}
+
+.c-row {
+  margin-top: 35.25vw;
+}
+
+.zero-col,
+.one-col,
+.two-col {
+  transform: rotate(90deg);
+  margin: 21.75vw 0 0 0;
+}
+
+.zero-col {
+  margin-left: -11vw;
+}
+
+.one-col {
+  margin-left: 2.5vw;
+}
+
+.two-col {
+  margin-left: 16vw;
+}
+
+.diagonal,
+.diagonal1 {
+  width: 50vw;
+}
+
+.diagonal {
+  transform: rotate(45deg);
+  margin: 22vw 0 0 -2vw;
+}
+
+.diagonal1 {
+  transform: rotate(135deg);
+  margin: 22vw 0 0 -2vw;
+}
+
+footer {
+  font-size: 2vw;
+  font-style: italic;
+  margin: auto 0 0.5vw 0;
+}
+/* JS classes to be added */
+.red-tile {
+  color: red;
+}
+
+.no-pointers {
+  pointer-events: none;
+}
+
+.hide {
+  visibility: hidden;
+  z-index: 0;
+}
+
+.show {
+  visibility: visible;
+}
+
+/* Extreme screen sizes. */
+@media (min-width: 1000px) {
+  .play-area {
+    height: 455px;
+    width: 455px;
+    gap: 6px;
+    padding: 0px 8px;
+  }
+
+  .tile {
+    font-size: 120px;
+    height: 140px;
+    width: 140px;
+  }
+
+  /* Winning lines */
+  .lines {
+    z-index: 1;
+    height: 455px;
+    width: 455px;
+    margin: 0;
+  }
+
+  .line {
+    width: 420px;
+    height: 10px;
+  }
+
+  .diagonal,
+  .diagonal1 {
+    width: 545px;
+  }
+
+  .a-row,
+  .b-row,
+  .c-row,
+  .zero-col,
+  .one-col,
+  .two-col,
+  .diagonal,
+  .diagonal1 {
+    margin: 0;
+  }
+
+  .a-row {
+    margin: 65px 0 0 15px;
+  }
+  .b-row {
+    margin: 218px 0 0 15px;
+  }
+  .c-row {
+    margin: 370px 0 0 15px;
+  }
+
+  .zero-col {
+    margin: 215px 0 0 -135px;
+  }
+  .one-col {
+    margin: 215px 0 0 15px;
+  }
+  .two-col {
+    margin: 215px 0 0 165px;
+  }
+
+  .diagonal {
+    margin: 215px 0 0 -50px;
+  }
+
+  .diagonal1 {
+    margin: 215px 0 0 -45px;
+  }
+
+  footer {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .play-area {
+    height: 465px;
+    width: 465px;
+    border: 0;
+    border-top: 6px solid #000;
+    border-bottom: 6px solid #000;
+  }
+}
+
+@media (max-width: 300px) {
+  .tile {
+    height: 12.3vw;
+    width: 12.3vw;
+  }
+}
+
+@media (max-height: 300px) {
+  .play-area {
+    height: 36.25vw;
+    width: 36.25vw;
+  }
+
+  .tile {
+    height: 11vw;
+    width: 11vw;
+  }
+}
+
+@media (max-width: 224px) {
+  .play-area {
+    width: 50vw;
+    height: 50vw;
+    border-top: solid #000 2vw;
+    border-bottom: solid #000 2vw;
+  }
+}

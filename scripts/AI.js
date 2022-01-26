@@ -29,7 +29,6 @@ const boardChecker = (() => {
     for (let i = 0; i < 8; i++) {
       let showLine = () => {
         gameboard.winLines[i].classList.add('show'), 1000;
-        console.log(gameboard.winLines[i]);
       };
       let pattern = winPatterns[i];
       if (pattern == 'XXX' || pattern == 'OOO') {
