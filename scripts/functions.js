@@ -35,6 +35,8 @@ cpu.random = (num) => {
 };
 
 cpu.addMarker = (spot) => {
+  // Prevent player from clicking on play-area during CPU turn.
+  document.body.classList.add('no-pointers'); 
   setTimeout(() => {
     const tileID = getKeyByValue(gameboard.squares[0], spot);
 
@@ -42,6 +44,8 @@ cpu.addMarker = (spot) => {
     markedTile.classList.add('red-tile');
     markedTile.classList.add('no-pointers');
     markedTile.textContent = cpu.marker;
+    // Allow play-area to be clicked again.
+    document.body.classList.remove('no-pointers');
   }, (cpu.random(1) + 1) * 1000);
 };
 
