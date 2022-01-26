@@ -13,7 +13,7 @@ line will be drawn across the winning letters indicating the winner.
 After a short delay the game will reset and is ready for another round.
 
 # Installation/Run
-Tic can be run from https://eugene-l-h.github.io/Tic-Tac-Toe/ or by
+Tic-Tac-Toe can be run from https://eugene-l-h.github.io/Tic-Tac-Toe/ or by
 downloading the files and opening the index.html file in the browser of your
 choice. 
 
