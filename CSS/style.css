@@ -11,9 +11,14 @@ body {
   justify-content: center;
   font-family: sans-serif;
   height: 100vh;
-  width: 100vw;
   align-items: center;
   background-color: #2f4f4f;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Box that contains the squares. */
@@ -48,10 +53,10 @@ body {
 
 /* Game winning lines displayed after game win */
 .lines {
-  position: absolute;
-  height: 41vw;
-  width: 41vw;
-  margin: -5vw 5vw 0 0;
+  position: fixed;
+
+  height: 40vw;
+  width: 40vw;
 }
 
 .line {
@@ -61,57 +66,49 @@ body {
   width: inherit;
 }
 
-.a-row,
-.b-row,
-.c-row {
-  margin-left: 2.5vw;
-}
-
 .a-row {
-  margin-top: 8vw;
-  margin-left: 2.5vw;
+  margin-top: 16%;
 }
 
 .b-row {
-  margin-top: 22vw;
+  margin-top: 49%;
 }
 
 .c-row {
-  margin-top: 35.25vw;
+  margin-top: 82.2%;
 }
 
 .zero-col,
 .one-col,
 .two-col {
   transform: rotate(90deg);
-  margin: 21.75vw 0 0 0;
+  margin-top: 50%;
 }
 
 .zero-col {
-  margin-left: -11vw;
-}
-
-.one-col {
-  margin-left: 2.5vw;
+  margin-left: -33.333%;
 }
 
 .two-col {
-  margin-left: 16vw;
+  margin-left: 33.33%;
+}
+
+.diagonals {
+  margin-left: -19%;
 }
 
 .diagonal,
 .diagonal1 {
-  width: 50vw;
+  width: 138%;
+  margin-top: 49%;
 }
 
 .diagonal {
   transform: rotate(45deg);
-  margin: 22vw 0 0 -2vw;
 }
 
 .diagonal1 {
   transform: rotate(135deg);
-  margin: 22vw 0 0 -2vw;
 }
 
 footer {
@@ -139,82 +136,12 @@ footer {
 
 /* Extreme screen sizes. */
 @media (min-width: 1000px) {
-  .play-area {
-    height: 455px;
-    width: 455px;
-    gap: 6px;
-    padding: 0px 8px;
-  }
-
-  .tile {
-    font-size: 120px;
-    height: 140px;
-    width: 140px;
-  }
-
-  /* Winning lines */
-  .lines {
-    z-index: 1;
-    height: 455px;
-    width: 455px;
-    margin: 0;
-  }
-
-  .line {
-    width: 420px;
-    height: 10px;
-  }
-
-  .diagonal,
-  .diagonal1 {
-    width: 545px;
-  }
-
-  .a-row,
-  .b-row,
-  .c-row,
-  .zero-col,
-  .one-col,
-  .two-col,
-  .diagonal,
-  .diagonal1 {
-    margin: 0;
-  }
-
-  .a-row {
-    margin: 65px 0 0 15px;
-  }
-  .b-row {
-    margin: 218px 0 0 15px;
-  }
-  .c-row {
-    margin: 370px 0 0 15px;
-  }
-
-  .zero-col {
-    margin: 215px 0 0 -135px;
-  }
-  .one-col {
-    margin: 215px 0 0 15px;
-  }
-  .two-col {
-    margin: 215px 0 0 165px;
-  }
-
-  .diagonal {
-    margin: 215px 0 0 -50px;
-  }
-
-  .diagonal1 {
-    margin: 215px 0 0 -45px;
-  }
-
   footer {
     font-size: 18px;
   }
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .play-area {
     height: 465px;
     width: 465px;
@@ -222,7 +149,7 @@ footer {
     border-top: 6px solid #000;
     border-bottom: 6px solid #000;
   }
-}
+} */
 
 @media (max-width: 300px) {
   .tile {
