@@ -86,7 +86,6 @@ cpu.behavior = (turn) => {
 
   // Place marker in random spot to simulate fallibility.
   let randomCPU = cpu.random(3);
-  console.log(randomCPU);
   if (randomCPU === 2) {
     for (let h = 0; h < 8; h++) {
       let check = gameboard.marked[h];
