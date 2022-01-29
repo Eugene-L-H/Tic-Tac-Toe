@@ -55,6 +55,16 @@ const boardChecker = (() => {
 
 // AI opponent behavior.
 cpu.behavior = (turn) => {
+  
+  // Avoid placing another marker if the player has won.
+  winPatterns = boardChecker.tileRuns(gameboard.marked);
+  for (let i = 0; i < 8; i++) {
+    let pattern = winPatterns[i];
+    if (pattern == 'XXX' || pattern == 'OOO') {
+      return;
+    }
+  }
+
   // Will handle inserting markers into marked array and inserting to the DOM.
   function insertMark(index, spots) {
     spot = spots[index];
