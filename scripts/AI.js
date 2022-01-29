@@ -25,6 +25,7 @@ const boardChecker = (() => {
 
   function checkForWin() {
     winPatterns = boardChecker.tileRuns(gameboard.marked);
+    boardAfterWin = document.querySelector('.wrapper');
 
     for (let i = 0; i < 8; i++) {
       let showLine = () => {
@@ -32,8 +33,8 @@ const boardChecker = (() => {
       };
       let pattern = winPatterns[i];
       if (pattern == 'XXX' || pattern == 'OOO') {
+        boardAfterWin.classList.add('no-pointers'); 
         // Reveal blue line across win.
-        document.querySelector('.wrapper').classList.add('no-pointers'); 
         setTimeout(showLine, 1500);
         setTimeout(gameboard.clearBoard, 3000);
         setTimeout(() => { return }, 3000);
