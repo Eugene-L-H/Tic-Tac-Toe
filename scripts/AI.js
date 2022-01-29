@@ -32,14 +32,16 @@ const boardChecker = (() => {
       };
       let pattern = winPatterns[i];
       if (pattern == 'XXX' || pattern == 'OOO') {
-        // Reveal proper blue line across win.
-        setTimeout(showLine, 2000);
-        setTimeout(gameboard.clearBoard, 4000);
-        break;
+        // Reveal blue line across win.
+        document.querySelector('.wrapper').classList.add('no-pointers'); 
+        setTimeout(showLine, 1500);
+        setTimeout(gameboard.clearBoard, 3000);
+        setTimeout(() => { return }, 3000);
       }
     }
   }
 
+  // Resets the game after short delay.
   function outOfTurns(turn) {
     if (turn == 5) {
       setTimeout(gameboard.clearBoard, 2000);
@@ -53,10 +55,39 @@ const boardChecker = (() => {
 
 // AI opponent behavior.
 cpu.behavior = (turn) => {
+  // Will handle inserting markers into marked array and inserting to the DOM.
+  function insertMark(index, spots) {
+    spot = spots[index];
+    gameboard.marked[spot] = 'O';
+    cpu.addMarker(spot);
+    return;
+  }
+
+  function insertMark2(spot) {
+    gameboard.marked[spot] = 'O';
+    cpu.addMarker(spot);
+  }
+
   // Do not place marker if game is over.
   if (turn == 0) {
     return;
   }
+
+  // Place marker in random spot to simulate fallibility.
+  let randomCPU = cpu.random(3);
+  console.log(randomCPU);
+  if (randomCPU === 2) {
+    for (let h = 0; h < 8; h++) {
+      let check = gameboard.marked[h];
+      
+      if (check === '-') {
+        insertMark2(h);
+        cpu.addMarker(h);
+        return;
+      }
+    }
+  }
+
   // Shortform for constant reference.
   const board = gameboard.marked; // Board.
 
@@ -73,18 +104,6 @@ cpu.behavior = (turn) => {
       spot = cpu.pickCorner();
     }
   } else {
-    // Will handle inserting markers into marked array and inserting to the DOM.
-    function insertMark(index, spots) {
-      spot = spots[index];
-      gameboard.marked[spot] = 'O';
-      cpu.addMarker(spot);
-      return;
-    }
-
-    function insertMark2(spot) {
-      gameboard.marked[spot] = 'O';
-      cpu.addMarker(spot);
-    }
     // Get current status of gameboard
     const boardStatus = boardChecker.tileRuns(board);
 

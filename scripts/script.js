@@ -6,15 +6,18 @@ const gameboard = (() => {
     const tile = playArea[i];
 
     tile.addEventListener('click', (e) => {
+      // Add player's X to the board.
       addX(e.target);
+
       gameboard.turn++;
+
       // Game over if board is full.
       boardChecker.outOfTurns(gameboard.turn);
 
       // CPU turn.
       cpu.behavior(gameboard.turn);
 
-      // Determine if game should end due to 3 in a row.
+      // Determine if game should end due to 3 in a row for CPU.
       boardChecker.checkForWin();
     });
   }
@@ -42,6 +45,7 @@ const gameboard = (() => {
       const tile = playArea[i];
       tile.innerHTML = '';
       tile.classList.remove('no-pointers');
+      document.querySelector('.wrapper').classList.remove('no-pointers'); 
       tile.classList.remove('red-tile');
       for (let i = 0; i < winLines.length; i++) {
         let line = winLines[i];
