@@ -35,6 +35,7 @@ body {
   border: solid #000 0.25vw;
   border-top: solid #000 0.75vw;
   border-bottom: solid #000 0.75vw;
+  margin-top: 4%;
 }
 
 /* Individual tiles */
