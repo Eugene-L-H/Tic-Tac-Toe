@@ -32,14 +32,14 @@ choice.
 
 ## Notes
 
-- This project was developed to be functional scaling from mobile to desktop
-environments. On mobiles it is best enjoyed in landscape. 
+- This project was developed to be functional when scaling from mobile to desktop
+  environments. On mobiles it is best enjoyed in landscape. 
 
 ## Some Learning Outcomes:
 - I was pressed to learn more about scaling from mobile to desktop with is this
-project; a topic I find quite challenging as I find myself needing to learn more
-and more about CSS. Styling doesn't seem to come as naturally to me as
-programming logic and JavaScript does.
+  project; a topic I find quite challenging as I find myself needing to learn more
+  and more about CSS. Styling doesn't seem to come as naturally to me as
+  programming logic and JavaScript does.
 
 - I had an enjoyable time programming an AI that had to analyze the conditions
   of the board and make decisions based on what it found. 
