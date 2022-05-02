@@ -34,7 +34,6 @@ choice.
 
 - This project was developed to be functional scaling from mobile to desktop
 environments. On mobiles it is best enjoyed in landscape. 
--
 
 ## Some Learning Outcomes:
 - I was pressed to learn more about scaling from mobile to desktop with is this
